@@ -573,6 +573,44 @@ function overviewCanvas(notes, prefix) {
   return { nodes, edges };
 }
 
+/**
+ * Obsidian 이 .canvas 를 저장할 때 쓰는 직렬화와 똑같이 쓴다.
+ * 탭 들여쓰기, 값이 전부 원시값인 객체·배열은 한 줄, `"key":` 뒤 공백 없음, 끝 줄바꿈 없음.
+ * 서식이 다르면 옵시디언에서 지도를 열기만 해도 파일이 다시 저장돼 git 변경이 생기고,
+ * 그 상태에서 새 지도를 pull 하면 충돌한다.
+ */
+function canvasLines(value) {
+  if (value === undefined) return ['null'];
+  if (typeof value !== 'object' || value === null) return [JSON.stringify(value)];
+  const isPrimitive = (v) => typeof v !== 'object';
+  const block = (open, close, entries) => {
+    const out = [open];
+    entries.forEach((lines, i) => {
+      lines.forEach((line, j) => {
+        const last = j === lines.length - 1 && i !== entries.length - 1;
+        out.push(`\t${line}${last ? ',' : ''}`);
+      });
+    });
+    out.push(close);
+    return out;
+  };
+  if (Array.isArray(value)) {
+    if (value.every(isPrimitive)) return [JSON.stringify(value)];
+    return block('[', ']', value.map((item) => canvasLines(item)));
+  }
+  const keys = Object.keys(value).filter((k) => value[k] !== undefined);
+  if (keys.every((k) => isPrimitive(value[k]))) return [JSON.stringify(value)];
+  return block('{', '}', keys.map((k) => {
+    const lines = canvasLines(value[k]);
+    lines[0] = `${JSON.stringify(k)}:${lines[0]}`;
+    return lines;
+  }));
+}
+
+function writeCanvas(file, canvas) {
+  fs.writeFileSync(file, canvasLines(canvas).join('\n'), 'utf8');
+}
+
 function cmdCanvas(vaultDir, args) {
   const notes = loadNotes(vaultDir);
   // 빈 문자열도 유효한 접두어이므로 truthy 검사를 쓰면 안 된다.
@@ -591,14 +629,14 @@ function cmdCanvas(vaultDir, args) {
   for (const topic of topics) {
     const canvas = canvasForTopic(notes, topic, prefix);
     const file = path.join(mapsDir, `${slugify(topic)}.canvas`);
-    fs.writeFileSync(file, `${JSON.stringify(canvas, null, 2)}\n`, 'utf8');
+    writeCanvas(file, canvas);
     written.push(`${path.relative(process.cwd(), file)} (노드 ${canvas.nodes.length})`);
   }
 
   if (!only) {
     const file = path.join(mapsDir, '_전체지도.canvas');
     const canvas = overviewCanvas(notes, prefix);
-    fs.writeFileSync(file, `${JSON.stringify(canvas, null, 2)}\n`, 'utf8');
+    writeCanvas(file, canvas);
     written.push(`${path.relative(process.cwd(), file)} (주제 ${canvas.nodes.filter((n) => n.type === 'file').length})`);
   }
 
