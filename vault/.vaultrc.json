@@ -1,0 +1,4 @@
+{
+  "_설명": "Obsidian 볼트 루트를 기준으로 한 이 폴더의 경로. 저장소 루트를 볼트로 열면 'vault/', vault 폴더를 직접 볼트로 열면 '' 로 둡니다. .canvas 안의 파일 경로에 쓰입니다.",
+  "canvasPathPrefix": "vault/"
+}

@@ -1,0 +1,84 @@
+{
+  "nodes": [
+    {
+      "id": "n001",
+      "type": "file",
+      "file": "vault/10-Topics/생각-정리-시스템.md",
+      "x": -480,
+      "y": 60,
+      "width": 340,
+      "height": 92,
+      "color": "6"
+    },
+    {
+      "id": "n003",
+      "type": "file",
+      "file": "vault/30-Questions/생각-정리-시스템/생각이-바뀌었을-때-옛-노트를-고칠까-새로-쓸까.md",
+      "x": 960,
+      "y": 0,
+      "width": 340,
+      "height": 92,
+      "color": "2"
+    },
+    {
+      "id": "n002",
+      "type": "file",
+      "file": "vault/20-Notes/생각-정리-시스템/구조는-캔버스가-아니라-노트의-parents-가-정한다.md",
+      "x": 480,
+      "y": 0,
+      "width": 340,
+      "height": 92,
+      "color": "4"
+    },
+    {
+      "id": "n005",
+      "type": "file",
+      "file": "vault/20-Notes/생각-정리-시스템/원자-노트-제목은-명사구가-아니라-서술문이어야-한다.md",
+      "x": 960,
+      "y": 120,
+      "width": 340,
+      "height": 92,
+      "color": "4"
+    },
+    {
+      "id": "n004",
+      "type": "file",
+      "file": "vault/20-Notes/생각-정리-시스템/머릿속이-복잡한-건-생각이-많아서가-아니라-층위가-섞여서다.md",
+      "x": 480,
+      "y": 120,
+      "width": 340,
+      "height": 92,
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-n002-n003",
+      "fromNode": "n002",
+      "fromSide": "right",
+      "toNode": "n003",
+      "toSide": "left"
+    },
+    {
+      "id": "e-n004-n005",
+      "fromNode": "n004",
+      "fromSide": "right",
+      "toNode": "n005",
+      "toSide": "left"
+    },
+    {
+      "id": "e-n001-n002",
+      "fromNode": "n001",
+      "fromSide": "right",
+      "toNode": "n002",
+      "toSide": "left"
+    },
+    {
+      "id": "e-n001-n004",
+      "fromNode": "n001",
+      "fromSide": "right",
+      "toNode": "n004",
+      "toSide": "left"
+    }
+  ]
+}

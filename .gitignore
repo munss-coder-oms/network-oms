@@ -1,0 +1,9 @@
+node_modules/
+.env
+
+# Obsidian 로컬 설정 (기기마다 다르므로 공유하지 않는다)
+# 저장소 루트를 볼트로 열면 .obsidian/ 이 루트에 생긴다
+.obsidian/
+.trash/
+vault/.obsidian/
+vault/.trash/

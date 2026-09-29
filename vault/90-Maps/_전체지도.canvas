@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "root",
+      "type": "text",
+      "text": "# 🧠 나의 생각 지도\n\n주제를 눌러 들어가세요.",
+      "x": -480,
+      "y": 0,
+      "width": 340,
+      "height": 132,
+      "color": "6"
+    },
+    {
+      "id": "t0",
+      "type": "file",
+      "file": "vault/10-Topics/생각-정리-시스템.md",
+      "x": 0,
+      "y": 0,
+      "width": 340,
+      "height": 92,
+      "color": "5"
+    },
+    {
+      "id": "t0-c",
+      "type": "text",
+      "text": "노트 5개",
+      "x": 480,
+      "y": 0,
+      "width": 160,
+      "height": 60,
+      "color": "3"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-root-t0",
+      "fromNode": "root",
+      "fromSide": "right",
+      "toNode": "t0",
+      "toSide": "left"
+    },
+    {
+      "id": "e-t0-c",
+      "fromNode": "t0",
+      "fromSide": "right",
+      "toNode": "t0-c",
+      "toSide": "left"
+    }
+  ]
+}
