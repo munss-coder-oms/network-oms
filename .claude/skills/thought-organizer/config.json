@@ -1,0 +1,16 @@
+{
+  "vaultPath": "vault",
+  "vaultCli": "node tools/vault.mjs",
+  "notion": {
+    "homePageId": "3b74c44d-2ebc-814d-a58c-fe8e9aabcd5a",
+    "homePageUrl": "https://app.notion.com/p/3b74c44d2ebc814da58cfe8e9aabcd5a",
+    "databaseUrl": "https://app.notion.com/p/b35f031bdba74f6990c1d941b7714521",
+    "dataSourceId": "32ed71b2-3759-4ac1-801e-35d029594530",
+    "dataSourceUri": "collection://32ed71b2-3759-4ac1-801e-35d029594530"
+  },
+  "defaults": {
+    "language": "ko",
+    "maxNotesPerSession": 10,
+    "maxQuestionsPerRound": 3
+  }
+}

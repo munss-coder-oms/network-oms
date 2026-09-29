@@ -1,0 +1,15 @@
+{
+  "name": "network-oms",
+  "version": "1.0.0",
+  "description": "음성 생각 정리 파이프라인 (Claude + Notion + Obsidian)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check tools/vault.mjs",
+    "vault": "node tools/vault.mjs",
+    "vault:build": "node tools/vault.mjs canvas && node tools/vault.mjs index && node tools/vault.mjs check"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
